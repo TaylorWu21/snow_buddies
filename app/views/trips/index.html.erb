@@ -1,0 +1,9 @@
+<h1>Trips to join</h1>
+
+<% if @trips.any? %>
+	<% @trips.each do |trip| %>
+		<%= trip.name %>
+	<% end %>
+<% end %>	
+
+<%= link_to 'New Trip', new_trip_path %>

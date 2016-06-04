@@ -1,0 +1,20 @@
+<%= form_for @trip do |f| %>
+
+	<%= f.label :title, 'Title: ' %>
+	<%= f.text_field :title %>
+
+	<%= f.label :date, 'Date: ' %>
+	<%= f.text_field :date %>
+
+	<%= f.label :description, 'Description: ' %>
+	<%= f.text_field :description %>
+
+	<%= f.label :location, 'Location:' %>
+	<%= f.select (:location)do %>
+		<% @options.each do |o| %>
+			<%= content_tag(:option, o.first, value: o.last) %>
+		<% end %>
+	<% end %>
+
+	<%= f.submit %>
+<% end %>
