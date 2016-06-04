@@ -30,6 +30,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
     <%= f.label :skill_level %><br />
     <%= f.select :skill_level, ['Beginner', 'Intermediate', 'Pro'], {}, class:"browser-default" %>
   </div>

@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
-  before_action :user, execpt
   def index
+ 
   end
 
   def show
+    @user = current_user
   end
 
   def edit
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def create
-  	
+  	@user = User.create(user_params)
   end
 
   def destroy
@@ -27,6 +28,7 @@ class UsersController < ApplicationController
   private
 
   	def user_params
-  		
-  	end
+  	params.require(:user).permit(:image)
+  end
+
 end
