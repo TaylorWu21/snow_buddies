@@ -7,6 +7,7 @@ class TripsController < ApplicationController
   end
 
   def show
+  	@resort = @trip.resorts.first
   end
 
   def edit
@@ -25,7 +26,10 @@ class TripsController < ApplicationController
   end
 
   def create
-  	@trip = current_user.trips.new(trip_params)
+  	@trip = current_user.trips.create(trip_params)
+
+  	@resort = Resort.find(params[:trip][:location])
+  	@location	= Location.create(trip_id: @trip.id, resort_id: @resort.id)
   	if @trip.save
   		flash[:success] = "Trip was created!"
   		redirect_to trip_path(@trip)
@@ -55,18 +59,19 @@ class TripsController < ApplicationController
   	end
 
   	def options
-  		@options = [['Solitude', '84121'],
-											 ['Park City/Canyons', '84060'],
-											  ['Sundance', '84604'],
-											  ['Powder Mountain', '84310'],
-											  ['Beaver Mountain', '84321'],
-											  ['Snowbird', '84092'],
-											  ['Brighton', '84121'],
-											  ['Brian Head', '84719'],
-											  ['Alta', '84092'],
-											  ['Richmond', '84333'],
-											  ['Deer Valley', '84060'],
-											  ['Snow Basin', '84317']
-											  ]
+  		@options = Resort.all.map { |resort| [resort.name, resort.id] } || []
+  		# @options = [['Solitude', '84121'],
+				# 							 ['Park City/Canyons', '84060'],
+				# 							  ['Sundance', '84604'],
+				# 							  ['Powder Mountain', '84310'],
+				# 							  ['Beaver Mountain', '84321'],
+				# 							  ['Snowbird', '84092'],
+				# 							  ['Brighton', '84121'],
+				# 							  ['Brian Head', '84719'],
+				# 							  ['Alta', '84092'],
+				# 							  ['Richmond', '84333'],
+				# 							  ['Deer Valley', '84060'],
+				# 							  ['Snow Basin', '84317']
+				# 							  ]
   	end
 end

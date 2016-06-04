@@ -2,8 +2,19 @@
 
 <% if @trips.any? %>
 	<% @trips.each do |trip| %>
-		<%= trip.name %>
+		<div class="row">
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-4">
+            <div class="card-content white-text">
+              <span class="card-title"><%= trip.title %></span>
+              <p><%= trip.date %></p>
+            </div>
+            <div class="card-action">
+              <!-- link to the creator user -->
+              <%= link_to 'Trip Details', trip_path(trip) %>
+            </div>
+          </div>
+        </div>
+      </div>	
 	<% end %>
 <% end %>	
-
-<%= link_to 'New Trip', new_trip_path %>

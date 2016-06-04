@@ -10,11 +10,7 @@
 	<%= f.text_field :description %>
 
 	<%= f.label :location, 'Location:' %>
-	<%= f.select (:location)do %>
-		<% @options.each do |o| %>
-			<%= content_tag(:option, o.first, value: o.last) %>
-		<% end %>
-	<% end %>
+	<%= f.select :location, options_for_select(@options), {}, class: 'browser-default' %>
 
 	<%= f.submit %>
 <% end %>

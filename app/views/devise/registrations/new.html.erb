@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+  <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -18,22 +18,21 @@
     <%= f.text_field :age %>
   </div>
 
-  <div class="field">
+  <div class="input-field">
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </div>
-
-  <div class="field">
+  <div class="input-field">
     <%= f.label :skill_level %><br />
-    <%= f.select :skill_level, ['Beginner', 'Intermediate', 'Pro'] %>
+    <%= f.select :skill_level, ['Beginner', 'Intermediate', 'Pro'], {}, class:"browser-default" %>
   </div>
 
-  <div class="field">
+  <div class="input-field">
     <%= f.label :ski_or_board %><br />
-    <%= f.select :ski_or_board, ['Ski', 'Snowboard'] %>
+    <%= f.select :ski_or_board, ['Skier', 'Snowboarder'], {}, class:"browser-default" %>
   </div>
 
-  <div class="field">
+  <div class="input-field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -41,7 +40,7 @@
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
-  <div class="field">
+  <div class="input-field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
