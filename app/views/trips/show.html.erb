@@ -9,8 +9,8 @@
 
 <h4>Location: <%= @resort.name %></h4>
 <% if @trip.user_id == current_user.id %>
-<%= link_to 'Edit', edit_trip_path(@trip) %>
-<%= link_to 'Delete', trip_path(@trip), method: :delete, data: {confirm: 'You want to delete this trip?'} %>
+<%= link_to 'Edit', edit_trip_path(@trip), class:'btn' %>
+<%= link_to 'Delete', trip_path(@trip), method: :delete, data: {confirm: 'You want to delete this trip?'}, class:'btn' %>
 <% end %>
 <%= link_to 'Back', trips_path, class:'btn btn-info' %>
 </div>

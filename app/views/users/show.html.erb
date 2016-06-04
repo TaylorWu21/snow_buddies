@@ -11,5 +11,7 @@
 <h3> Ski/Board : <%= @user.ski_or_board %> </h3>
 <br/>
 
-<div><%= image_tag @user.image.url %></div>
+<div><%= image_tag @user.image.url(:medium) %></div>
+
+<%= link_to 'Edit Profile', edit_user_path(current_user), class:'btn' %>
 	

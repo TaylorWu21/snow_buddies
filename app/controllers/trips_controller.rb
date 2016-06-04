@@ -3,7 +3,8 @@ class TripsController < ApplicationController
 	before_action :trip, except: [:index, :new, :create]
 	before_action :options, only: [:new, :edit, :update, :create]
 	def index
-		@trips = Trip.where('user_id != ?' ,current_user.id)
+    user_trip = current_user.trips
+		@trips = Trip.all - user_trip
   end
 
   def show
@@ -51,7 +52,7 @@ class TripsController < ApplicationController
   	end
 
   	def trip_params
-  		params.require(:trip).permit(:title, :date,:description)
+  		params.require(:trip).permit(:title, :date, :description, :location)
   	end
 
   	def trip

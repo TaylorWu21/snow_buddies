@@ -1,10 +1,10 @@
 <div class='center'>
 	<h1>Welcome, <%= @current_user.name %>!</h1>
-	<h3>Trips to Join</h3>
 </div>
 
 
 <% if @trips.any? %>
+  <h3>Trips to join</h3>
 	<div class="row">
 		<% @trips.each do |trip| %>
       <div class="col l4 m6">
@@ -14,12 +14,14 @@
             <p><%= trip.date %></p>
           </div>
           <div class="card-action">
-            <!-- link to the creator user -->
+            <%= link_to 'Creator Profile', user_path(trip.user_id) %>
             <%= link_to 'Trip Details', trip_path(trip) %>
          	</div>
         </div>
     	</div>	
 		<% end %>
 	</div>
+<% else %>
+  <h3 class='center'>No trips to attend</h3>
 <% end %>	
 
